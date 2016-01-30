@@ -28,6 +28,6 @@ public class BanksController {
         }
         session.setAttribute(ACCOUNT_LIST_WRAPPER, accountListWrapper);
         model.addAttribute(ACCOUNT_LIST_WRAPPER,accountListWrapper);
-        return "hello";
+        return "index";
     }
 }

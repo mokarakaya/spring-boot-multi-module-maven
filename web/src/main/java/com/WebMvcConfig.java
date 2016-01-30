@@ -6,10 +6,20 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.beans.factory.annotation.Value;
+
+import java.lang.System;
 
 @Configuration
 @EnableWebMvc
 public class WebMvcConfig extends WebMvcConfigurerAdapter{
+
+
+    @Value("${spring.mvc.view.prefix}")
+    private String location;
+
+    @Value("${spring.mvc.view.suffix}")
+    private String suffix;
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -19,9 +29,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("WEB-INF/pages/");
-        resolver.setSuffix(".jsp");
+        resolver.setPrefix(location);
+        resolver.setSuffix(suffix);
         return resolver;
     }
+
+
 
 }
