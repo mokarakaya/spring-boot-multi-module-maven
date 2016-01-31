@@ -12,7 +12,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
 @Configuration
-@ComponentScan("com.apiDemo.controller")
+@ComponentScan("com.apiDemo.*")
 @SpringBootApplication
 @EnableJpaRepositories
 public class ApiApplication extends SpringBootServletInitializer {
