@@ -8,15 +8,27 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript"></script>
 <body>
 	<form:form method="GET" modelAttribute="accountListWrapper" action="/">
+	<table>
+		<tr>
+			<td><td><label >Select Storage Type</label></td></td>
+			<td>
+				<form:select  name= "storageType" path="storageType" onchange="submit()">
+					<form:option value="session"  >Session</form:option>
+					<form:option value="database" >Database</form:option>
+				</form:select>
+			</td>
+		</tr>
+	</table>
 		<table>
-			<c:forEach items="${accountListWrapper.accountList}" varStatus="i">
+			<c:forEach items="${accountListWrapper.accountList}" varStatus="i" var="account">
 				<tr>
 					<td><label >Iban</label></td>
-					<td><form:input  id="${i.index}iban" path="accountList[${i.index}].iban" /></td>
+					<!-- if response is from database account.id should be null -->
+					<td><form:input  id="${account.id==null ? i.index:account.id}iban" path="accountList[${i.index}].iban" /></td>
 					<td><label >Business Identifier Code</label></td>
-					<td><form:input  id="${i.index}businessIdentifierCode" path="accountList[${i.index}].businessIdentifierCode" /></td>
-					<td><button onclick="updateRow(${i.index})" />Update</td>
-					<td><button onclick="deleteRow(${i.index})" />Delete</td>
+					<td><form:input  id="${account.id==null ? i.index:account.id}businessIdentifierCode" path="accountList[${i.index}].businessIdentifierCode" /></td>
+					<td><button onclick="updateRow(${account.id==null ? i.index:account.id})" />Update</td>
+					<td><button onclick="deleteRow(${account.id==null ? i.index:account.id})" />Delete</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -28,15 +40,17 @@
 					<td><input  id="createIban" path="createIban" /></td>
 					<td><label >Business Identifier Code</label></td>
 					<td><input  id="createBusinessIdentifierCode" path="createBusinessIdentifierCode" /></td>
-					<td><button onclick="createRow(${i.index})" />Create</td>
+					<td><button onclick="createRow()" />Create</td>
 				</tr>
 		</table>
 	</form:form>
 <script>
 	function updateRow(index) {
+		storageTypeUrl= $('select[name=storageType]').val() == "session"  ? "sessionOperations" : "operations";
 		$.ajax({
+			async: false,
 			type: "PUT",
-			url: "/operations/?index="+index+"&iban="+document.getElementById(index+"iban").value
+			url: "/"+storageTypeUrl+"/?index="+index+"&iban="+document.getElementById(index+"iban").value
 			+"&businessIdentifierCode="+document.getElementById(index+"businessIdentifierCode").value,
 			success: function(data){
 				console.log("update Row successful");
@@ -45,10 +59,12 @@
 				alert(error);
 			}});
 	}
-	function createRow(index) {
+	function createRow() {
+		storageTypeUrl= $('select[name=storageType]').val() == "session"  ? "sessionOperations" : "operations";
 		$.ajax({
+			async: false,
 			type: "POST",
-			url: "/operations/?iban="+document.getElementById("createIban").value
+			url: "/"+storageTypeUrl+"/?iban="+document.getElementById("createIban").value
 			+"&businessIdentifierCode="+document.getElementById("createBusinessIdentifierCode").value,
 			success: function(data){
 				console.log("create Row successful");
@@ -57,10 +73,12 @@
 				alert(error);
 			}});
 	}
-	function deleteRow(index) {
+	function deleteRow(index,id) {
+		storageTypeUrl= $('select[name=storageType]').val() == "session"  ? "sessionOperations" : "operations";
 		$.ajax({
+			async: false,
 			type: "DELETE",
-			url: "/operations/?index="+index,
+			url: "/"+storageTypeUrl+"/?index="+index,
 			success: function(data){
 				console.log("delete Row successful");
 			},

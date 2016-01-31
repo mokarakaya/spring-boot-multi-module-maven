@@ -6,6 +6,7 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 @Configuration
 @ComponentScan("com.apiDemo.controller")
 @SpringBootApplication
+@EnableJpaRepositories
 public class ApiApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) throws Exception {

@@ -8,11 +8,16 @@ import java.util.List;
  */
 public class AccountListWrapper {
     private List<Account> accountList;
+    private String storageType;
 
     public AccountListWrapper(){
         accountList=new ArrayList<>();
     }
 
+    public AccountListWrapper(List<Account> accountList,String storageType){
+        this.accountList=accountList;
+        this.storageType=storageType;
+    }
     public void add(Account account){
         this.accountList.add(account);
     }
@@ -23,5 +28,13 @@ public class AccountListWrapper {
 
     public void setAccountList(List<Account> accountList) {
         this.accountList = accountList;
+    }
+
+    public String getStorageType() {
+        return storageType;
+    }
+
+    public void setStorageType(String storageType) {
+        this.storageType = storageType;
     }
 }

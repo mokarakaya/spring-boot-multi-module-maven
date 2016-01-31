@@ -1,4 +1,4 @@
-package com.apiDemo;
+package com.webDemo;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
