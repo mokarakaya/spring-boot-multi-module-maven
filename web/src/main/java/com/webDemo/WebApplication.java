@@ -11,10 +11,12 @@ import org.springframework.context.annotation.Import;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+/**
+ * since basePackage includes com.apiDemo.* and api module is imported, api components will also be invoked.
+ */
 @Configuration
 @ComponentScan(basePackages = "com.*")
 @SpringBootApplication
-@Import(com.apiDemo.ApiApplication.class)
 public class WebApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) throws Exception {

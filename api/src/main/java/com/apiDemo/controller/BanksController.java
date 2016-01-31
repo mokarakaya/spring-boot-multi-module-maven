@@ -50,7 +50,7 @@ public class BanksController {
      */
     private void checkSessionId(long index, HttpServletRequest request) throws Exception {
         Account account = banksService.get(index);
-        if(!account.getSessionId().equals(request.getRequestedSessionId())){
+        if(account.getSessionId()!=null  && !account.getSessionId().equals(request.getRequestedSessionId())){
             throw new Exception("invalid session id");
         }
     }

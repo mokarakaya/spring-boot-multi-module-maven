@@ -31,9 +31,10 @@ public class BanksService {
         accountRepository.save(account);
     }
 
-    public void create(String iban, String businessIdentifierCode ,String sessionId) {
+    public long create(String iban, String businessIdentifierCode ,String sessionId) {
         Account account = new Account(sessionId,iban,businessIdentifierCode);
         accountRepository.save(account);
+        return account.getId();
     }
 
     public void delete(long index) {

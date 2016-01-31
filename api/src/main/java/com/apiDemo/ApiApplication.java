@@ -11,6 +11,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+/**
+ * this module which consists of rest services can also run without web module.
+ */
 @Configuration
 @ComponentScan("com.apiDemo.*")
 @SpringBootApplication

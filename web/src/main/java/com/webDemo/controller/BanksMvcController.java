@@ -30,7 +30,7 @@ public class BanksMvcController {
     private static final String DATABASE="database";
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String hello(HttpSession session,ModelMap model, @RequestParam(value="storageType",required = false) String storageType) {
+    public String getAccountListWrapper(HttpSession session,ModelMap model, @RequestParam(value="storageType",required = false) String storageType) {
         AccountListWrapper accountListWrapper=null;
         if(storageType==null || SESSION.equals(storageType)) {
             accountListWrapper = sessionSelected(session, storageType);
