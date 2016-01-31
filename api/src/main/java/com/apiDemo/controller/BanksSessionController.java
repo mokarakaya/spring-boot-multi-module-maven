@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by p.bell on 26.01.2016.
+ * this class consists of rest services for session operations
  */
 @RestController
 @RequestMapping("/sessionOperations")

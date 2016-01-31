@@ -43,17 +43,20 @@ public class BanksMvcController {
 
     private AccountListWrapper databaseSelected(HttpSession session, String storageType) {
         List<Account> accountList = banksService.getBySessionId(session.getId());
+        if(accountList.size()==0){
+            banksService.create(INIT_IBAN,INIT_BUSINESS_IDENTIFER_CODE,session.getId());
+            accountList = banksService.getBySessionId(session.getId());
+        }
         return new AccountListWrapper(accountList,DATABASE);
     }
 
-    private AccountListWrapper sessionSelected(HttpSession session, @RequestParam(value = "storageType", required = false) String storageType) {
+    private AccountListWrapper sessionSelected(HttpSession session, String storageType) {
         AccountListWrapper accountListWrapper = (AccountListWrapper) session.getAttribute(ACCOUNT_LIST_WRAPPER);
         if(accountListWrapper==null){
             accountListWrapper=  new AccountListWrapper();
             accountListWrapper.add(new Account(INIT_IBAN, INIT_BUSINESS_IDENTIFER_CODE));
-            accountListWrapper.setStorageType(SESSION);
         }
-        accountListWrapper.setStorageType(storageType);
+        accountListWrapper.setStorageType(SESSION);
         session.setAttribute(ACCOUNT_LIST_WRAPPER, accountListWrapper);
         return accountListWrapper;
     }

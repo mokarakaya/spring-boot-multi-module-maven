@@ -23,7 +23,7 @@
 			<c:forEach items="${accountListWrapper.accountList}" varStatus="i" var="account">
 				<tr>
 					<td><label >Iban</label></td>
-					<!-- if response is from database account.id should be null -->
+					<!-- if response is not from database account.id should be null -->
 					<td><form:input  id="${account.id==null ? i.index:account.id}iban" path="accountList[${i.index}].iban" /></td>
 					<td><label >Business Identifier Code</label></td>
 					<td><form:input  id="${account.id==null ? i.index:account.id}businessIdentifierCode" path="accountList[${i.index}].businessIdentifierCode" /></td>

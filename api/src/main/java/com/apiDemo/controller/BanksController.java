@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by p.bell on 26.01.2016.
+ * this class consists of rest services for database operations
  */
 @RestController
 @RequestMapping("/operations")
@@ -41,6 +42,12 @@ public class BanksController {
         banksService.delete(index);
     }
 
+    /**
+     * checks if the request is from the proper session
+     * @param index
+     * @param request
+     * @throws Exception
+     */
     private void checkSessionId(long index, HttpServletRequest request) throws Exception {
         Account account = banksService.get(index);
         if(!account.getSessionId().equals(request.getRequestedSessionId())){
