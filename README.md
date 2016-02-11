@@ -4,11 +4,15 @@ This project is a multi module maven project. Modules are api and web.
 Steps to run;
 
 First please navigate to webDemoProject folder and build the project as;
+ 
  webDemoProject>mvn clean install
 
 If everything works fine navigate to web folder and run spring boot project as;
+ 
  webDemoProject>cd web
+ 
  webDemoProject/web>mvn spring-boot:run
+
 
 Then go to; localhost:8080
 
