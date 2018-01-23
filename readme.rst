@@ -1,7 +1,10 @@
 .. image:: https://travis-ci.org/mkarakaya/spring-boot-multi-module-maven.svg?branch=master
    :target: https://travis-ci.org/mkarakaya/spring-boot-multi-module-maven
 
-# spring-boot-multi-module-maven
+
+spring-boot-multi-module-maven
+~~~~~~~~~~~~
+
 This project is a multi module maven project. Modules are api and web.
 
 Steps to run;
