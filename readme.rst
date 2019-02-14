@@ -1,5 +1,5 @@
-.. image:: https://travis-ci.org/mkarakaya/spring-boot-multi-module-maven.svg?branch=master
-   :target: https://travis-ci.org/mkarakaya/spring-boot-multi-module-maven
+.. image:: https://travis-ci.org/mokarakaya/spring-boot-multi-module-maven.svg?branch=master
+   :target: https://travis-ci.org/mokarakaya/spring-boot-multi-module-maven
 
 
 spring-boot-multi-module-maven
